@@ -4,7 +4,7 @@ import css from './Section.module.css';
 const Section = ({ title, children }) => {
   return (
     <section>
-      <p>{title}</p>
+      <p className={css.title}>{title}</p>
       {children}
     </section>
   );
