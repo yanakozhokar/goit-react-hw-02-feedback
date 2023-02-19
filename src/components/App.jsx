@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Notification from 'components/Notification/Notification';
 import Container from './Container/Container';
 import Section from './Section/Section';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
@@ -38,13 +39,17 @@ export class App extends Component {
           />
         </Section>
         <Section title="Statistics">
-          <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
-            total={this.countTotalFeedback()}
-            positivePercentage={this.countPositiveFeedbackPercentage()}
-          />
+          {this.countTotalFeedback() !== 0 ? (
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />
+          ) : (
+            <Notification />
+          )}
         </Section>
       </Container>
     );
